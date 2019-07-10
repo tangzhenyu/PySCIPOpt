@@ -3906,8 +3906,8 @@ cdef class Model:
         update = prev_state is not None
 
         # COLUMNS
-        cdef SCIP_COL** cols = SCIPgetLPCols(scip)
-        cdef int ncols = SCIPgetNLPCols(scip)
+        cdef SCIP_COL** cols = SCIPgetLPCols(scip) 
+        cdef int ncols = SCIPgetNLPCols(scip) #gets current number of LP columns
 
         cdef np.ndarray[np.int32_t,   ndim=1] col_types
         cdef np.ndarray[np.float32_t, ndim=1] col_coefs
@@ -4065,7 +4065,7 @@ cdef class Model:
 
             if not update:
                 # number of coefficients
-                row_nnzrs[i] = SCIProwGetNLPNonz(rows[i])
+                row_nnzrs[i] = SCIProwGetNLPNonz(rows[i]) #
                 nnzrs += row_nnzrs[i]
 
                 # left-hand-side
